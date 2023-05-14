@@ -42,6 +42,11 @@ project "NetworkScanner"
 			"NS_PLATFORM_WINDOWS"
 		}
 
+		links
+		{
+			"Ws2_32.lib"
+		}
+
 	filter "configurations:Debug"
 		defines "NS_DEBUG"
 		symbols "On"

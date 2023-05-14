@@ -7,9 +7,12 @@ namespace NS {
 	class Scanner
 	{
 	public:
-		virtual void Init() = 0;
+		virtual bool Init() = 0;
 		virtual void Shutdown() = 0;
 
+		virtual void PrintVendorInfo() = 0;
+
+	public:
 		static std::shared_ptr<Scanner> Create();
 	};
 

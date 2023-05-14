@@ -10,8 +10,10 @@ namespace NS {
 		WindowsScanner() = default;
 		~WindowsScanner() = default;
 
-		virtual void Init() override;
+		virtual bool Init() override;
 		virtual void Shutdown() override;
+
+		virtual void PrintVendorInfo() override;
 
 	private:
 

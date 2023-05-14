@@ -14,17 +14,24 @@ namespace NS {
 		NS_INFO("Log Initialized");
 
 		m_Scanner = Scanner::Create();
-		m_Scanner->Init();
+		if (!m_Scanner->Init())
+		{
+			m_Running = false;
+			return;
+		}
 	}
 
 	Application::~Application()
 	{
-
+		m_Scanner->Shutdown();
 	}
 
 	void Application::Run()
 	{
+		if (!m_Running)
+			return;
 
+		m_Scanner->PrintVendorInfo();
 	}
 
 	void Application::SetCurrentPlatform()

@@ -28,6 +28,8 @@ namespace NS {
 		std::shared_ptr<Scanner> m_Scanner;
 		Platform m_CurrentPlatform;
 
+		bool m_Running = true;
+
 	public:
 		static Application* s_App;
 	};
