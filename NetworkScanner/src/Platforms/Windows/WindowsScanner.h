@@ -2,6 +2,8 @@
 
 #include "Core/Scanner.h"
 
+struct sockaddr_in;
+
 namespace NS {
 
 	class WindowsScanner : public Scanner
@@ -13,10 +15,14 @@ namespace NS {
 		virtual bool Init() override;
 		virtual void Shutdown() override;
 
-		virtual void PrintVendorInfo() override;
+		virtual void PrintVendorInfo() const override;
 
 	private:
+		virtual void GatherDevices();
 
+	private:
+		char* DNSLookup(char* addr_host, struct sockaddr_in* addr_con);
+		char* ReverseDNSLookup(char* ip_addr);
 	};
 
 }
