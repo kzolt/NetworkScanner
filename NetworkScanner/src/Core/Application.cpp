@@ -38,7 +38,9 @@ namespace NS {
 	{
 		#ifdef NS_PLATFORM_WINDOWS
 			m_CurrentPlatform = Platform::Windows;
-		#else
+		#elif NS_PLATFORM_MACOS
+            m_CurrentPlatform = Platform::MacOS;
+        #else
 			NS_WARN("Currently only windows is supported!");
 		#endif
 	}

@@ -12,17 +12,17 @@ namespace NS {
 		WindowsScanner() = default;
 		~WindowsScanner() = default;
 
-		virtual bool Init() override;
-		virtual void Shutdown() override;
+        virtual bool Init() override {}
+        virtual void Shutdown() override {}
 
-		virtual void PrintVendorInfo() const override;
-
-	private:
-		virtual void GatherDevices();
+        virtual void PrintVendorInfo() const override {}
 
 	private:
-		char* DNSLookup(char* addr_host, struct sockaddr_in* addr_con);
-		char* ReverseDNSLookup(char* ip_addr);
+        virtual void GatherDevices() override {}
+
+	private:
+        char* DNSLookup(char* addr_host, struct sockaddr_in* addr_con);
+        char* ReverseDNSLookup(char* ip_addr);
 	};
 
 }

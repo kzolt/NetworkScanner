@@ -15,11 +15,8 @@ project "NetworkScanner"
 	kind "ConsoleApp"
 	language "C++"
 
-	targetdir("bin/" .. outputdir .. "%{prj.name}")
-	objdir ("bin-int/" .. outputdir .. "%{prj.name}")
-
-	pchheader "pch.h"
-	pchsource "NetworkScanner/src/pch.cpp"
+	targetdir("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
 	includedirs
 	{
@@ -30,12 +27,17 @@ project "NetworkScanner"
 	files 
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/*.cpp",
+		"%{prj.name}/src/Core/*.cpp"
+
 	}
 
 	filter "system:windows"
 		cppdialect "C++20"
 		systemversion "latest"
+
+		pchheader "pch.h"
+		pchsource "NetworkScanner/src/pch.cpp"
 
 		defines
 		{
@@ -46,6 +48,29 @@ project "NetworkScanner"
 		{
 			"Ws2_32.lib"
 		}
+
+		files
+		{
+			"%{prj.name}/src/Platforms/Windows/*.cpp"
+		}
+
+	filter "system:macosx"
+		cppdialect "C++20"
+		systemversion "latest"
+
+		pchheader "src/pch.h"
+
+		defines
+		{
+			"NS_PLATFORM_MACOS"
+		}
+
+		externalincludedirs
+		{
+			"NetworkScanner/vendor/spdlog/include"
+		}
+
+		xcodebuildsettings = {  ["ALWAYS_SEARCH_USER_PATHS"] = "YES" }
 
 	filter "configurations:Debug"
 		defines "NS_DEBUG"

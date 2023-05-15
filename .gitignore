@@ -1,7 +1,17 @@
-.vs/
+# Binary Files
 bin/
 bin-int/
+
+# Vistual Studio Files
+.vs/
 *.sln
 *.vcxproj
 *.vcxproj.filters
 *.vcxproj.user
+
+# MacOS Files
+.DS_Store
+
+# XCode Files
+*.xcworkspace
+*.xcodeproj
